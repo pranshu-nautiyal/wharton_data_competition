@@ -1,0 +1,12 @@
+FINAL SUMMARY STATISTICS
+======================================================================
+
+Total Teams Analyzed: 32
+Total Games Analyzed: 1312
+Total Records Processed: 25827
+Top Ranked Team: brazil
+Top Team Power Rating: 58.07
+Team with Most Disparity: usa
+Highest Disparity Ratio: 1.364
+Correlation (Disparity vs Strength): -0.025
+Average Win Probability (Home Teams): 0.798

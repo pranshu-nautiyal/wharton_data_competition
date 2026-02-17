@@ -1,0 +1,88 @@
+PHASE 1D: METHODOLOGY SUMMARY
+======================================================================
+
+
+======================================================================
+1. PROCESS
+======================================================================
+
+Data Cleaning (~50 words):
+We loaded the WHL game data from Google Sheets and converted string columns to 
+appropriate numeric types (integers for counts, floats for xG and TOI). We 
+aggregated the 25,827 line-level records to 1,312 game-level summaries by 
+grouping on game_id and summing statistics. We verified data integrity by 
+checking for missing values and confirming each team played 82 games.
+
+Additional Variables (~25 words):
+We created win/loss indicators, per-game averages (goals, xG), differentials 
+(GF-GA, xGF-xGA), composite power ratings, xG per hour metrics, and offensive 
+line disparity ratios.
+
+
+======================================================================
+2. TOOLS AND TECHNIQUES
+======================================================================
+
+Software Tools:
+  - Python (pandas, numpy, matplotlib, seaborn)
+  - Google Sheets API (gspread)
+  - VS Code
+
+Tool Usage (~50 words):
+We used Python for all data processing and analysis. Pandas handled data 
+manipulation and aggregation. NumPy performed numerical calculations. Gspread 
+connected to Google Sheets for data import/export. Matplotlib and seaborn 
+created visualizations. VS Code served as our development environment with 
+version control.
+
+Statistical Methods (~100 words):
+For team rankings, we created a composite power rating combining xG differential 
+(50% weight), goal differential (30%), and offensive xG rate (20%). This 
+balanced process metrics (xG) with results (goals). For win probabilities, we 
+used logistic regression principles: P(home wins) = 1/(1 + e^(-k*rating_diff)), 
+with k=0.15 and home advantage of 3.0 points. For line disparity, we 
+calculated xG per hour for each offensive line, then computed the ratio of 
+first-line to second-line performance. We validated using correlation analysis 
+(r=-0.025 between disparity and team strength).
+
+
+======================================================================
+3. YOUR PREDICTIONS
+======================================================================
+
+1a - Power Rankings (~50 words):
+We ranked teams by composite power rating combining xG differential, goal 
+differential, and offensive quality. Rating differences between matchup teams 
+were converted to win probabilities using a logistic function with home ice 
+advantage adjustment. This approach values sustainable process over volatile 
+results.
+
+1b - Line Disparity (~50 words):
+We calculated xG per hour (xG/TOI × 3600) for each team's first and second 
+offensive lines across all games. The disparity ratio (first_line/second_line) 
+quantified the performance gap. Higher ratios indicate greater dependence on 
+top lines and less depth.
+
+1c - Visualization (~50 words):
+We created a scatter plot with disparity ratio on x-axis and power rating on 
+y-axis. Points were colored by team rank, with trend line and annotations for 
+top/bottom teams. We added correlation coefficient and interpretation to clearly 
+communicate the relationship between depth and success.
+
+
+======================================================================
+4. YOUR INSIGHTS
+======================================================================
+
+Model Performance (~50 words):
+We validated our model by comparing predicted win probabilities to actual 
+outcomes in historical data. We examined residuals between power ratings and 
+win percentages. We tested correlation strength between our metrics. We 
+performed sanity checks ensuring all probabilities were between 0 and 1.
+
+Generative AI Usage (~50 words):
+We used AI tools to help structure our analysis approach and debug code errors. 
+AI assisted with explaining statistical concepts and suggesting visualization 
+best practices. However, all final analytical decisions, code implementation, 
+and interpretations were made by our team after understanding the suggestions.
+
